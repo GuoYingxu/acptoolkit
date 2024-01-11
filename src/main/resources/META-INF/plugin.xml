@@ -1,0 +1,57 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.itshixun.acptoolkit</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Acptoolkit</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="guoyx@itshixun.com" url="https://www.itshixun.com">qst@itshixun</vendor>
+    <!-- Product and plugin compatibility requirements.
+            Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+    青软内部开发工具插件<br>
+    <em>内部工具，识别obron框架中的ACP权限模块,并在@spica注解中进行提示。安装后请重启idea</em>
+    features：
+        1. 显示@spica注解中的权限名称
+        2. 权限输入自动补全
+        3. 权限字符串检查
+  ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <codeInsight.declarativeInlayProvider
+                implementationClass="com.itshixun.acptoolkit.AcpInlayProvider"
+                language="JAVA"
+                isEnabledByDefault="false"
+                nameKey = "acp.inlay.provider.name"
+                providerId="acp.inlay.provider.id"
+                group="OTHER_GROUP"
+                bundle="message.JavaBundle"
+        />
+        <lang.documentationProvider language="JAVA"
+                                    implementationClass="com.itshixun.acptoolkit.AcpDocumentationProvider"/>
+        <completion.contributor implementationClass="com.itshixun.acptoolkit.AcpCompletionContributor" language="any"/>
+    </extensions>
+    <actions>
+        <action id="CollectAcpAnAction" class="com.itshixun.acptoolkit.CollectAcpAnAction" text="CollectAcpAnAction"
+                description="CollectAcpAnAction">
+            <add-to-group group-id="FileMenu" anchor="first"/>
+        </action>
+    </actions>
+</idea-plugin>
