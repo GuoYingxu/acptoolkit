@@ -19,7 +19,6 @@ class AcpInlayProvider:InlayHintsProvider {
         const val PROVIDER_ID: String = "java.acp.hints"
     }
     override fun createCollector(file: PsiFile, editor: Editor): InlayHintsCollector? {
-        //TODO("Not yet implemented")
         if(file.project.getService(AcpService::class.java).initialized()) {
             return Collector()
         }else {
@@ -42,41 +41,6 @@ class AcpInlayProvider:InlayHintsProvider {
                         }
                     }
                 }
-//                println("collectFromElement:${element.nameReferenceElement?.text}")
-//                if(element.nameReferenceElement?.text == "Spica") {
-//                    element.children.forEach { child ->
-//                        if(child is PsiAnnotationParameterList) {
-//                            child.attributes.forEach { param ->
-//                                if(param is PsiNameValuePair) {
-//                                    if(param.name == "expr") {
-//                                        val rights = param.value
-//                                        println(rights)
-//                                    }
-//                                }
-//                            }
-//                        }
-//                            logger<AcpInlayProvider>().info("child:${child.text}")
-//                            if(child.name == "name") {
-//                                child.value?.let {
-//                                    if(it is PsiLiteralValue) {
-//
-//                                        (it as PsiLiteralValue).textRange?.let {
-//                                            logger<AcpInlayProvider>().info("it:${it.startOffset},${it.endOffset}")
-//                                        }
-//                                        val startOffset = (it as PsiLiteralValue).textRange?.startOffset
-//                                        val endOffset = (it as PsiLiteralValue).textRange?.endOffset
-//                                        if(endOffset == null || startOffset == null) {
-//                                            return
-//                                        }
-//                                        sink.addPresentation(InlineInlayPosition(endOffset,true), hasBackground = true){
-//                                            text("Spica")
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
             }
         }
 

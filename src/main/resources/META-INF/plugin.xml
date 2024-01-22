@@ -45,12 +45,20 @@
         />
         <lang.documentationProvider language="JAVA"
                                     implementationClass="com.itshixun.acptoolkit.AcpDocumentationProvider"/>
-        <completion.contributor implementationClass="com.itshixun.acptoolkit.AcpCompletionContributor" language="any"/>
+        <completion.confidence implementationClass="com.itshixun.acptoolkit.AcpCompletionConfidence" order="first"
+                               language="JAVA" id="javaSkipAutopopupInStringsss"/>
+<!--        <completion.contributor implementationClass="com.itshixun.acptoolkit.AcpCompletionContributor" language="any"/>-->
+        <psi.referenceContributor implementation="com.itshixun.acptoolkit.AcpReferenceContributor" language="JAVA"/>
     </extensions>
-    <actions>
-        <action id="CollectAcpAnAction" class="com.itshixun.acptoolkit.CollectAcpAnAction" text="CollectAcpAnAction"
-                description="CollectAcpAnAction">
-            <add-to-group group-id="FileMenu" anchor="first"/>
-        </action>
-    </actions>
+<projectListeners>
+    <listener class="com.itshixun.acptoolkit.AcpFileListener"
+              topic="com.intellij.openapi.vfs.newvfs.BulkFileListener"
+    />
+</projectListeners>
+<!--    <actions>-->
+<!--        <action id="CollectAcpAnAction" class="com.itshixun.acptoolkit.CollectAcpAnAction" text="CollectAcpAnAction"-->
+<!--                description="CollectAcpAnAction">-->
+<!--            <add-to-group group-id="FileMenu" anchor="first"/>-->
+<!--        </action>-->
+<!--    </actions>-->
 </idea-plugin>

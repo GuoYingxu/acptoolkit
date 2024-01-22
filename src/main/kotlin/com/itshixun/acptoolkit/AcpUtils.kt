@@ -83,7 +83,7 @@ class AcpUtils {
                                 val name = resolveText( arguments.expressions[1]);
                                 val description = resolveText( arguments.expressions[3]);
                                 val referenecExpression  = resolveExpression(arguments.expressions[1])
-//                                println("module:$module,name:$name,description:$description")
+                                println("module:$module,name:$name,description:$description")
                                 AcpCacheData.getInstance().acpDefinitionMap[name] = AcpDefinition(module,description,name,referenecExpression)
                             }
 
