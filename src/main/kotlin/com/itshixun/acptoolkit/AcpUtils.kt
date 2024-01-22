@@ -58,7 +58,8 @@ class AcpUtils {
 
         }
 
-        fun findRightsDescription(name:String):String? {
+        fun findRightsDescription(nameValue:String):String? {
+            val name = nameValue.trim()
 //        println(name)
             if(name.isBlank()) return null
             if(name.contains(',')) {
