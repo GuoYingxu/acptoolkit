@@ -12,10 +12,8 @@ import com.intellij.util.ThreeState
 class AcpCompletionConfidence: CompletionConfidence() {
     override fun shouldSkipAutopopup(contextElement: PsiElement, psiFile: PsiFile, offset: Int): ThreeState {
 //        return super.shouldSkipAutopopup(contextElement, psiFile, offset)
-        println(contextElement.elementType)
-        println("offset$offset")
         val expression =PsiTreeUtil.getParentOfType(contextElement, PsiLiteralExpression::class.java)
-        if(AcpUtils.isAcpPsiLiteralExpression(expression as PsiElement)) {
+        if(expression!=null &&AcpUtils.isAcpPsiLiteralExpression(expression as PsiElement)) {
             println("true")
             return ThreeState.NO
         }else {
