@@ -33,10 +33,12 @@ class AcpInlayProvider:InlayHintsProvider {
                 AcpUtils.findSpicaRights(element)?.let {
                     if(it.value != null) {
                         val name = it.value as String
-                        val description = AcpUtils.findRightsDescription(name)
-                        description?.let {
-                            sink.addPresentation(InlineInlayPosition(element.textRange.endOffset, true), hasBackground = true) {
-                                text(it)
+                        if(name.isNotEmpty()) {
+                            val description = AcpUtils.findRightsDescription(name)
+                            if(description?.isNotEmpty() == true) {
+                                sink.addPresentation(InlineInlayPosition(element.textRange.endOffset, true), hasBackground = true) {
+                                    text(description)
+                                }
                             }
                         }
                     }

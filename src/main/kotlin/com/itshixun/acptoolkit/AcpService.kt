@@ -4,7 +4,6 @@ import com.intellij.openapi.components.Service
 import com.intellij.openapi.project.Project
 import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.psi.search.PsiShortNamesCache
-
 @Service(Service.Level.PROJECT)
 class AcpService(private val project:Project) {
     private var initing = false
@@ -19,7 +18,6 @@ class AcpService(private val project:Project) {
 //               println(psiDefinitionMethods.size)
             psiDefinitionMethods.forEach {
                 AcpUtils.collectAcpFromClass(it.containingClass!!)
-
             }
         initing =false
         ready = true
